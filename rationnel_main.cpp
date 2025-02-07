@@ -2,16 +2,44 @@
 
 int main()
 {
-    Rationnel Q,a,b;
-    Q.setNum_1(&a, &b);
-    Q.setDenom_1(&a, &b);
-    Q.setNum_2(&a, &b);
-    Q.setDenom_2(&a, &b);
+    Rationnel a,b,c;
 
-    Q.plus(a, b);
-    Q.minus( a, b);
-    Q.multiply(a, b);
-    Q.divide(a, b);
+    cout << "entrer le numerateur de a : ";
+    a.setNum(setn());
+    cout << "entrer le denominateur de a : ";
+    a.setDenom(setn());
+
+    cout << "entrer le numerateur de b : ";
+    b.setNum(setn());
+    cout << "entrer le denominateur de b : ";
+    b.setDenom(setn());
+
+    simplify(&a);
+    simplify(&b);
+
+    cout << "somme : " ;
+    c = a.plus(b);
+    simple(c);
+    cout << " = ";
+    get(c);
+
+    cout << "soustraction : ";
+    c = a.minus(b);
+    simple(c);
+    cout << " = ";
+    get(c);
+
+    cout << "multiplication : ";
+    c = a.multiply(b);
+    simple(c);
+    cout << " = ";
+    get(c);
+
+    cout << "division : ";
+    c = a.divide(b);
+    simple(c);
+    cout << " = ";
+    get(c);
 
     return 0;
 }

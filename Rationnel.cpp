@@ -1,65 +1,71 @@
 #include "rationnel.h"
 
-void Rationnel::setNum_1(Rationnel *a , Rationnel *b)
+void Rationnel::setNum(double n)
 {
-    cout << "entrer le numerateur 1 : ";
-    cin >> a->num;
+    num = n;
 }
 
-void Rationnel::setNum_2(Rationnel *a , Rationnel *b)
+void Rationnel::setDenom(double n)
 {
-    cout << "entrer le numerateur 2 : ";
-    cin >> b->num;
+    den = n;
 }
 
-void Rationnel::setDenom_1(Rationnel *a , Rationnel *b)
+double Rationnel::getNum()
 {
-    cout << "entrer le denominateur 1 : ";
-    cin >> a->den;
+    return this->num;
 }
 
-void Rationnel::setDenom_2(Rationnel *a , Rationnel *b)
+double Rationnel::getDenom()
 {
-    cout << "entrer le denominateur 2 : ";
-    cin >> b->den;
+    return this->den;
 }
 
-void Rationnel::plus(Rationnel a, Rationnel b)
+Rationnel Rationnel::plus(Rationnel a)
 {
-    cout << "somme : ";
-    cout << "(" << a.num << "/" << a.den << ")" << "+" << "(" << b.num << "/" << b.den << ")  = " ;
-    cout << (a.num/a.den) + (b.num/a.den) << endl;
+    Rationnel r;
+    r.num = (a.getNum() * this->getDenom() + this->getNum() * a.getDenom());
+    r.den = (this->getDenom() * a.getDenom());
+    return r;
 }
 
-void Rationnel::minus(Rationnel a, Rationnel b)
+Rationnel Rationnel::minus(Rationnel a)
 {
-    cout << "difference : ";
-    cout << "(" << a.num << "/" << a.den << ")" << "-" << "(" << b.num << "/" << b.den << ")  = ";
-    cout << (a.num/a.den) - (b.num/a.den) << endl;
+    Rationnel r;
+    r.num = (a.getNum() * this->getDenom() - this->getNum() * a.getDenom());
+    r.den = (this->getDenom() * a.getDenom());
+    return r;
+    }
+
+Rationnel Rationnel::multiply(Rationnel a)
+{
+    Rationnel r;
+    r.num = (a.getNum() * this->getNum());
+    r.den = (this->getDenom() * a.getDenom());
+    return r;
 }
 
-void Rationnel::divide(Rationnel a , Rationnel b)
+Rationnel Rationnel::divide(Rationnel a)
 {
-    cout << "division : ";
-    cout << "(" << a.num << "/" << a.den << ")" << "/" << "(" << b.num << "/" << b.den << ")  = " ;
-    cout << (a.num/a.den) / (b.num/a.den) << endl;
+    Rationnel r;
+    r.num = (this->getNum()  * a.getDenom());
+    r.den = (this->getDenom() * a.getNum());
+    return r;
 }
 
-void Rationnel::multiply(Rationnel a , Rationnel b)
-{
-    cout << "multiplication : ";
-    cout << "(" << a.num << "/" << a.den << ")" << "*" << "(" << b.num << "/" << b.den << ")  = " ;
-    cout << (a.num/a.den) * (b.num/a.den) << endl;
+
+void get(Rationnel c)
+{   
+    cout << c.num/c.den << endl;
 }
-/* 
-void gcd(Rationnel *c)
+
+void simplify(Rationnel *c)
 {
-    int i;
+    int i,n;
     if(c->num > c->den)
     {
         for(i = c->num ; i > 0 ; i--)
         {
-            if(c->num % i == 0 && c->den % i == 0)
+            if((int)c->num % i == 0 && (int)c->den % i == 0)
             {
                 break;
             }
@@ -69,21 +75,23 @@ void gcd(Rationnel *c)
     {
         for(i = c->den ; i > 0 ; i--)
         {
-            if(c->num % i == 0 && c->den % i == 0)
+            if((int)c->num % i == 0 && (int)c->den % i == 0)
             {
                 break;
             }
         }
     }
-    
+    c->num = c->num / i;
+    c->den = c->den / i;
 }
 
-
-void simplify(Rationnel *a, Rationnel *b)
+void simple(Rationnel c)
 {
-    if(a->num == 1 || b->num == 1)
-    {
-
-    }
+    cout << c.num << "/" << c.den;
 }
- */
+double setn()
+{
+    double n;
+    cin >> n;
+    return (n);
+}
